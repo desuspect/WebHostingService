@@ -1,19 +1,28 @@
-module.exports.usernameCheck = function (username) {
-  return new Promise((resolve, reject) => {
-    if (username) {
-    const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-      if (format.test(username)) {
-        reject("Special Characters");
-      } else {
-        resolve();
-      }
+
+module.exports.loginCheck = function (req, user) {
+  return new Promise((resolve, reject) => { 
+    var found = false;
+    user.findAll().then(data => {
+     data.forEach(element => {
+       if ((element.dataValues.username === req.body.username) && (element.dataValues.password === req.body.password)){
+        found = true;
+       } 
+     })
+     if (found) {
+      resolve();
+    } else {
+      reject("User not found")
     }
-    reject("Empty");
+   })
+  .catch(err => {
+     console.log("LOGIN AUTHENTICATION ERROR "  + err)
+   })
   });
 };
 
-module.exports.registrationCheck = function(req) {
+module.exports.registrationCheck = function(req, user) {
     return new Promise((resolve, reject) => {
+      var found = false
         const format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
         if (req.body.name) {
           if (format.test(req.body.name)) {
@@ -31,19 +40,37 @@ module.exports.registrationCheck = function(req) {
                               if (!format.test(req.body.email)) {
                                 reject("Invalid Format");
                               } else {
-                                resolve();
+                                user.findAll().then(data => {
+                                  data.forEach(element => {                                
+                                    if (element.dataValues.email === req.body.email) {
+                                        found = true;               
+                                    } 
+                                  });
+                                  if (found) {
+                                    reject("Email is already been used")
+                                  } else {
+                                    resolve()
+                                  }
+                              }).catch(err =>{
+                                  console.log("this happened finding: " + err)
+                              })
                               }
-                            }
-                            reject("Empty");
+                            }else {
+                              reject("Empty");
+                            }   
                         }
                 }else{
                     reject("Password must be between 6 and 10 characters");
                 }
+            }else{
+              reject("Empty");
             }
-            reject("Empty");
+            
           }
+        }else {
+          reject("Empty");
         }
-        reject("Empty");
+        
       });
 }
 
