@@ -106,17 +106,17 @@ const plan = seq.define("plan", {
   },
 });
 
-user.create({
-    name : "admin",
-    lastname : "admin",
-    email: "admin",
-    password: "admin",
-    username: "admin",
-    userType: "admin"
-}).then(() => {
-    console.log("USER CREATED")
+// user.create({
+//     name : "admin",
+//     lastname : "admin",
+//     email: "admin",
+//     password: "admin",
+//     username: "admin",
+//     userType: "admin"
+// }).then(() => {
+//     console.log("USER CREATED")
 
-}).catch(err => console.log("CREATION ERROR " + err))
+// }).catch(err => console.log("CREATION ERROR " + err))
 
 const planFeatures = seq.define("planFeatures", {
   planId: {
@@ -332,8 +332,7 @@ app.post("/addPlan", (req, res) => {
             })
             .catch((err) => console.log("this happened creating: " + err));
           }
-          res.render('dashboard', {
-            file: `./public/img/${req.file.filename}`,
+          res.render('planCreated', {
             layout: false
           });
   
