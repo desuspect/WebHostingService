@@ -1,230 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
-    />
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
-    <title>Web Hosting Service</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
-      <div class="container">
-        <a href="/" class="navbar-brand"> <img src="/img/logo.png"  height="41"> Web Hosting Service</a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navmenu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <title>Web Hosting Service</title>
+</head>
 
-        <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a href="/login" class="nav-link">Log in</a>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+    <div class="container">
+      <a href="/" class="navbar-brand"> <img src="/img/logo.png" height="41"> Web Hosting Service</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="/login" class="nav-link">Log in</a>
+          </li>
+          <li class="nav-item">
+            <a href="/registration" class="nav-link">Registration</a>
+          </li>
+          <li class="nav-item">
+            <a href="/plans" class="nav-link">Plans</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Showcase -->
+
+
+  <section class="p-5 bg-primary">
+    <div class="container">
+      <h2 class="text-center text-white">Our Plans</h2>
+      <p class="lead text-center text-white mb-5">
+        Our plans fits many of our customers like a glove to their web hosting requirements.
+      </p>
+      <div class="row g-4" id="plansdiv">
+        <div class="col-md-6 col-lg-3">
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <img src="/img/freetrial.png" class="rounded-circle mb-3" height="200" />
+              <h3 class="card-title mb-3">{{title1}}</h3>
+              <p class="card-text">
+                {{description1}}
+              </p>
+              <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
+              <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
+              <br>
+              <br>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <img src="/img/entry.png" class="rounded-circle mb-3" height="176" />
+              <h3 class="card-title mb-3">{{title2}}</h3>
+              <p class="card-text">
+                {{description2}}
+              </p>
+              <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
+              <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
+              <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+              <br>
+              <br>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <img src="/img/pro.png" class="rounded-circle mb-3" height="175" />
+              <h3 class="card-title mb-3">{{title3}}</h3>
+              <p class="card-text">
+                {{description3}}
+              </p>
+              <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
+              <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
+              <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+              <br>
+              <br>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card bg-light">
+            <div class="card-body text-center">
+              <img src="/img/enterprise.png" class="rounded-circle mb-3" height="223" />
+              <h3 class="card-title mb-3">{{title4}}</h3>
+              <p class="card-text">
+                {{description4}}
+              </p>
+              <h4 class="card-title mb-3">C$1123/mo</h4>
+              <a href="#" class="btn btn-primary">Add to cart</a>
+              
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+    
+ 
+
+  <!-- Contact-->
+  <section class="p-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md">
+          <h2 class="text-center mb-4">Contact Info</h2>
+          <ul class="list-group list-group-flush lead">
+            <li class="list-group-item">
+              <span class="fw-bold">Main Location:</span> 50 Main st Boston MA
             </li>
-            <li class="nav-item">
-              <a href="/registration" class="nav-link">Registration</a>
+            <li class="list-group-item">
+              <span class="fw-bold">Customer Support:</span> (555) 555-5555
             </li>
-              <li class="nav-item">
-              <a href="/plans" class="nav-link">Plans</a>
+            <li class="list-group-item">
+              <span class="fw-bold">Sales Phone:</span> (333) 333-3333
+            </li>
+            <li class="list-group-item">
+              <span class="fw-bold">Email:</span> (555)
+              webservice@senecaws.com
             </li>
           </ul>
         </div>
       </div>
-    </nav>
-
-    <!-- Showcase -->
-   
-
-    <section id="plans" class="p-5 bg-primary">
-        <div class="container">
-          <h2 class="text-center text-white">Our Plans</h2>
-          <p class="lead text-center text-white mb-5">
-            Our plans fits many of our customers like a glove to their web hosting requirements. 
-          </p>
-          <div class="row g-4">
-              <div class="col-md-6 col-lg-3">
-                <div class="card bg-light">
-                  <div class="card-body text-center">
-                    <img
-                      src="/img/freetrial.png"
-                      class="rounded-circle mb-3"
-                      height="200"
-                    />
-                    <h3 class="card-title mb-3">{{title1}}</h3>
-                    <p class="card-text">
-                      {{description1}}
-                    </p>
-                    <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
-                    <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
-                    <br>
-                    <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                  </div>
-                </div>
-              </div>
-  
-            <div class="col-md-6 col-lg-3">
-              <div class="card bg-light">
-                <div class="card-body text-center">
-                  <img
-                    src="/img/entry.png"
-                    class="rounded-circle mb-3"
-                    height="176"
-                  />
-                  <h3 class="card-title mb-3">{{title2}}</h3>
-                  <p class="card-text">
-                    {{description2}}
-                  </p>
-                  <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
-                  <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
-                  <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                     <br>
-                     <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-md-6 col-lg-3">
-              <div class="card bg-light">
-                <div class="card-body text-center">
-                  <img
-                    src="/img/pro.png"
-                    class="rounded-circle mb-3"
-                    height = "175"
-                  />
-                  <h3 class="card-title mb-3">{{title3}}</h3>
-                  <p class="card-text">
-                    {{description3}}
-                  </p>
-                  <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
-                  <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
-                  <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                     <br>
-                     <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-md-6 col-lg-3">
-              <div class="card bg-light">
-                <div class="card-body text-center">
-                  <img
-                    src="/img/enterprise.png"
-                    class="rounded-circle mb-3"
-                    height ="223"
-                  />
-                  <h3 class="card-title mb-3">{{title4}}</h3>
-                  <p class="card-text">
-                    {{description4}}
-                  </p>
-                  <a href="#"><i class="bi bi-laptop text-dark mx-1"></i></a>
-                  <a href="#"><i class="bi bi-person-square text-dark mx-1"></i></a>
-                  <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                     <br>
-                     <br>
-                    <a href="#" class="btn btn-primary">Add to cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    </div>
+  </section>
 
 
-    <!-- Contact-->
-    <section class="p-5">
+  </footer>
+  <div class="footer-dark">
+    <footer>
       <div class="container">
-        <div class="row g-4">
-          <div class="col-md">
-            <h2 class="text-center mb-4">Contact Info</h2>
-            <ul class="list-group list-group-flush lead">
-              <li class="list-group-item">
-                <span class="fw-bold">Main Location:</span> 50 Main st Boston MA
-              </li>
-              <li class="list-group-item">
-                <span class="fw-bold">Customer Support:</span> (555) 555-5555
-              </li>
-              <li class="list-group-item">
-                <span class="fw-bold">Sales Phone:</span> (333) 333-3333
-              </li>
-              <li class="list-group-item">
-                <span class="fw-bold">Email:</span> (555)
-                webservice@senecaws.com
-              </li>
+        <div class="row">
+          <div class="col-md-3 item">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">Web design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">Hosting</a></li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-
-      
-    </footer> 
-    <div class="footer-dark">
-      <footer>
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-3 item">
-                      <h3>Services</h3>
-                      <ul>
-                          <li><a href="#">Web design</a></li>
-                          <li><a href="#">Development</a></li>
-                          <li><a href="#">Hosting</a></li>
-                      </ul>
-                  </div>
-                  <div class="col-md-3 item">
-                      <h3>Services</h3>
-                      <ul>
-                          <li><a href="#">Web design</a></li>
-                          <li><a href="#">Development</a></li>
-                          <li><a href="#">Hosting</a></li>
-                      </ul>
-                  </div>
-                  <div class="col-md-3 item">
-                      <h3>About</h3>
-                      <ul>
-                          <li><a href="#">Company</a></li>
-                          <li><a href="#">Team</a></li>
-                          <li><a href="#">Careers</a></li>
-                      </ul>
-                  </div>
-                  
-                  <div class="col item social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-youtube"></i></a><a href="#"><i class="fa fa-instagram"></i></a><a href="#"><i class="fa fa-google"></i></a></div>
-              </div>
-              
+          <div class="col-md-3 item">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">Web design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">Hosting</a></li>
+            </ul>
           </div>
-      </footer>
+          <div class="col-md-3 item">
+            <h3>About</h3>
+            <ul>
+              <li><a href="#">Company</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+
+          <div class="col item social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
+                class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-youtube"></i></a><a href="#"><i
+                class="fa fa-instagram"></i></a><a href="#"><i class="fa fa-google"></i></a></div>
+        </div>
+
+      </div>
+    </footer>
   </div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    function loadPlans() {
+
+    const plans = {{{ plans }}};
+    const plansfeatures = {{{ planFeatures }}};
+
+    const divplans = document.getElementById("plansdiv");
+
+
+
+    plans.forEach((plan) => {
+
+      const div1 = document.createElement("div");
+      const div2 = document.createElement("div");
+      const div3 = document.createElement("div");
+      const img = document.createElement("img");
+      const h3 = document.createElement("h3");
+      const p = document.createElement("p");
+      const h4 = document.createElement("h4");
+      const a = document.createElement("a");
+
+      div1.className += "col-md-6 col-lg-3";    
+      div2.className += "card bg-light";
+      div3.className += "card-body text-center";
+      img.className += "rounded-circle mb-3";
+      h3.className += "card-title mb-3";
+      p.className += "card-text";
+      a.className += "btn btn-primary";
+
+      img.setAttribute("height", "100");
+      img.setAttribute("src", plan.img);
+
+      const title = document.createTextNode(plan.title);
+      h3.appendChild(title);
+
+      const description = document.createTextNode(plan.description);
+      p.appendChild(description);
+
+      if (plan.price) {
+        const price = document.createTextNode("C$" + plan.price + "/mo");
+        h4.appendChild(price);
+      }
+      const addtoCart = document.createTextNode("Add to Cart");
+      a.appendChild(addtoCart);
+
+      div3.appendChild(img);
+      div3.appendChild(h3);
+      div3.appendChild(p);
+      div3.appendChild(h4);
+      div3.appendChild(a);
+
+      plansfeatures.forEach((planfeature) => {
+
+        const ul = document.createElement("ul");
+
+        if (plan.planId == planfeature.planId) {
+          const li = document.createElement("li");
+          const feature = document.createTextNode(planfeature.description);
+
+          li.appendChild(feature);
+
+          ul.appendChild(li);
+
+          div3.appendChild(ul);
+        }
+      })
+
+      div2.appendChild(div3);
+
+      div1.appendChild(div2);
+      
+      divplans.appendChild(div1);
+    })
+
+
+
+    
+    }
+
+    window.onload = loadPlans;
+
+  </script>
+</body>
+
 </html>

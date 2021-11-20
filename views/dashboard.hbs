@@ -78,9 +78,14 @@
                     <br>
                     {{email}}.
                   </p>
-                     <br>
-                     <br>
-
+                     <br>                     
+                     {{#if admin}}
+                
+                {{/if}}
+ <form action="/dashboard", method="post">                          
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Add Plan</button>
+                </form>
                 </div>
               </div>
             </div>
