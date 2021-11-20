@@ -106,17 +106,17 @@ const plan = seq.define("plan", {
   },
 });
 
-// user.create({
-//     name : "admin",
-//     lastname : "admin",
-//     email: "admin",
-//     password: "admin",
-//     username: "admin",
-//     userType: "admin"
-// }).then(() => {
-//     console.log("CREATED")
+user.create({
+    name : "admin",
+    lastname : "admin",
+    email: "admin",
+    password: "admin",
+    username: "admin",
+    userType: "admin"
+}).then(() => {
+    console.log("USER CREATED")
 
-// }).catch(err => console.log("CREATION ERROR " + err))
+}).catch(err => console.log("CREATION ERROR " + err))
 
 const planFeatures = seq.define("planFeatures", {
   planId: {
