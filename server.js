@@ -5,7 +5,8 @@ const path = require("path");
 const sequelize = require("sequelize");
 const multer  = require('multer');
 const validation = require("./validation.js");
-const loadPlans = require("./loadPlans");
+const { BelongsTo } = require("sequelize");
+
 
 const storage = multer.diskStorage({
   destination: './public/img',
@@ -104,6 +105,9 @@ const plan = seq.define("plan", {
   img: {
     type: sequelize.STRING
   },
+  mostPopular: {
+    type: sequelize.BOOLEAN
+  },
 });
 
 // user.create({
@@ -137,7 +141,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", function (req, res) {
-  res.render("home", { layout: false });
+  var plansfeaturesdata
+  planFeatures.findAll().then(data =>{
+    plansfeaturesdata = data;
+  })
+
+  plan.findAll().then((data) => { 
+    res.render("home", {
+      layout: false,
+      plans: JSON.stringify(data),
+      planFeatures : JSON.stringify(plansfeaturesdata),
+    });
+  });
 });
 
 app.get("/registration", function (req, res) {
@@ -249,8 +264,68 @@ app.post("/registration", function (req, res) {
     });
 });
 
-app.post("/dashboard",  (req, res) =>  {
+app.post("/dashboard-create",  (req, res) =>  {
   res.render("addPlan", { layout: false});
+});
+app.post("/dashboard-edit",  (req, res) =>  {
+  plan.findAll().then((data) => { 
+    res.render("editPlans", {
+      layout: false,
+      plans: JSON.stringify(data),
+    });
+  });
+  
+});
+
+app.post("/editPlans",  (req, res) =>  {
+  var currentTitle = req.body.currentTitle;
+  var title = req.body.title;
+  const price = req.body.price;
+  const mostPopular = req.body.mostPopular;
+  const description = req.body.description;
+  var ids = [];
+  var id = 0;
+
+  console.log(currentTitle)
+
+  plan.findAll().then(data => {
+    data.forEach(plan => {
+      ids.push(plan.dataValues.planId);
+      if (currentTitle === plan.dataValues.title) {
+        id = plan.dataValues.planId
+      }         
+    });
+    
+    if (!mostPopular) {  
+  var values = { price: price, title : title, description: description};
+  var selector = { 
+  where: { planId : id }
+};
+plan.update(values, selector)
+.then(data => {
+    console.log("RECORD UPDATED")
+});
+    } else {
+   
+      var values = { mostPopular: false};
+      var selector = { 
+      where: { planId : ids }
+    };
+    plan.update(values, selector)
+    .then(data => {
+        console.log("RECORDS UPDATED")
+    });
+
+     values = { price: price, title : title, description: description, mostPopular: true};
+     selector = { 
+    where: { planId : id }
+  };
+  plan.update(values, selector)
+  .then(data => {
+      console.log("RECORD UPDATED")
+  });
+    }
+  })
 });
 
 app.post("/plans",  (req, res) =>  {
@@ -342,9 +417,6 @@ app.post("/addPlan", (req, res) => {
       }
     }
   });
-
-
-  
 });
 
 

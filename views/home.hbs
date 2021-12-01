@@ -81,66 +81,20 @@
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1">Best hosting Service</h1>
         <p class="lead">The global impact of the CoronaVirus has left many businesses scrambling, forcing them to shut down their primary offices and asking their staff to work from home. With a full lockdown looming or already in effect in many parts of the world, there's never been a more pressing time to establish a plan to ensure business continuity, should your primary place of business become inaccessible. </p>
-       
       </div>
       <div class="col-lg-4   overflow-hidden shadow-lg">
           <img class="rounded-lg-3" src="img/web-hosting.jpg" alt="752" width="450">
       </div>
     </div>
   </div>
+       
 
   
     <!-- Boxes -->
-    <section class="p-5">
-      <div class="container">
-        <div class="row text-center g-4">
-          <div class="col-md">
-            <div class="card bg-dark text-light">
-              <div class="card-body text-center">
-                <div class="h1 mb-3">
-                  <i class="bi bi-laptop"></i>
-                </div>
-                <h3 class="card-title mb-3">Personal</h3>
-                <p class="card-text">
-                  Web Hosting aimed at personal websites.
-                </p>
-                <a href="#" class="btn btn-primary">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card bg-secondary text-light">
-              <div class="card-body text-center">
-                <div class="h1 mb-3">
-                  <i class="bi bi-person-square"></i>
-                </div>
-                <h3 class="card-title mb-3">Company</h3>
-                <p class="card-text">
-                  Company and corporate oriented services.
-                </p>
-                <a href="#" class="btn btn-dark">Read More</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="card bg-dark text-light">
-              <div class="card-body text-center">
-                <div class="h1 mb-3">
-                  <i class="bi bi-people"></i>
-                </div>
-                <h3 class="card-title mb-3">School</h3>
-                <p class="card-text">
-                  Classroom oriented hosting.
-                </p>
-                <a href="#" class="btn btn-primary">Read More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
+<div id="divmostpopular">
 
+</div>
 
     <!-- Contact-->
     <section class="p-5">
@@ -203,5 +157,90 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+
+      function loadMostPopular (){
+
+      const plans = {{{ plans }}};
+      const plansfeatures = {{{ planFeatures }}};
+
+    console.log(plans)
+      var mostpopular = 0;
+
+
+  for (let index = 0; index < plans.length; index++) {
+      if(plans.mostPopular === true){
+        mostpopular = index;
+      }
+  }
+      const div1 = document.createElement("div");
+      const div2 = document.createElement("div");
+      const div3 = document.createElement("div");
+      const img = document.createElement("img");
+      const h3 = document.createElement("h3");
+      const p = document.createElement("p");
+      const h4 = document.createElement("h4");
+      const a = document.createElement("a");
+
+      div1.className += "";    
+      div2.className += "card bg-light";
+      div3.className += "card-body text-center";
+      img.className += "rounded-circle mb-3";
+      h3.className += "card-title mb-3";
+      p.className += "card-text";
+      a.className += "btn btn-primary";
+
+      img.setAttribute("height", "200");
+      img.setAttribute("src", plans[mostpopular].img);
+
+      const title = document.createTextNode( plans[mostpopular].title);
+      h3.appendChild(title);
+
+      const description = document.createTextNode( plans[mostpopular].description);
+      p.appendChild(description);
+
+      if (plans[mostpopular].price) {
+        const price = document.createTextNode("C$" +  plans[mostpopular].price + "/mo");
+        h4.appendChild(price);
+      }
+      const addtoCart = document.createTextNode("Add to Cart");
+      a.appendChild(addtoCart);
+
+      div3.appendChild(img);
+      div3.appendChild(h3);
+      div3.appendChild(p);
+      div3.appendChild(h4);
+      div3.appendChild(a);
+
+      plansfeatures.forEach((planfeature) => {
+
+        const ul = document.createElement("ul");
+
+        if (plans[mostpopular].planId == planfeature.planId) {
+          const li = document.createElement("li");
+          const feature = document.createTextNode(planfeature.description);
+
+          li.appendChild(feature);
+
+          ul.appendChild(li);
+
+          div3.appendChild(ul);
+        }
+      })
+
+      div2.appendChild(div3);
+
+      div1.appendChild(div2);
+      
+      divmostpopular.appendChild(div1);
+      }
+
+        window.onload = loadMostPopular;
+
+
+    </script>
+
+
   </body>
 </html>
