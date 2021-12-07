@@ -1,4 +1,6 @@
-module.exports.loginCheck = function (req, user) {
+const bcrypt  = require('bcryptjs');
+
+module.exports.loginCheck = function (req, user, salt) {
   return new Promise((resolve, reject) => {
     var found = false;
     var userid = 0;
@@ -6,10 +8,8 @@ module.exports.loginCheck = function (req, user) {
       .findAll()
       .then((data) => {
         data.forEach((element) => {
-          if (
-            element.dataValues.username === req.body.username &&
-            element.dataValues.password === req.body.password
-          ) {
+          const passwordMatch = bcrypt.compareSync(req.body.password, element.dataValues.password)
+          if (element.dataValues.username === req.body.username && passwordMatch) {
             userid = element.dataValues.userId;
             found = true;
           }

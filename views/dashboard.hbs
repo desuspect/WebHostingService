@@ -78,7 +78,15 @@
                     <br>
                     {{email}}.
                   </p>
-                     <br>                     
+                      
+                          
+                {{#if user}}
+
+                 <form action="/cart" method="get">                          
+                  <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Go to my Cart </button>
+                </form>
+                {{/if}}                   
                      {{#if admin}}
                  <form action="/dashboard-create", method="post">                          
                   <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -90,10 +98,13 @@
                     Edit Plans</button>
                 </form>
                 {{/if}}
+                <br>
+                <a href="/logout">Logout</a>
 
                 </div>
               </div>
             </div>
+              
 </section>
  
 

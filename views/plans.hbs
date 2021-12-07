@@ -51,14 +51,23 @@
         Our plans fits many of our customers like a glove to their web hosting requirements.
       </p>
       <div class="row g-4" id="plansdiv">
-
+    {{!-- <div class="card bg-light">
+      <div class="card-body text-center"><img class="rounded-circle mb-3" height="100" src="/img/photo-1638455375364.png">
+        <h3 class="card-title mb-3">Test</h3>
+        <p class="card-text">etetetert</p>
+        <h4>C$123/mo</h4>
+        <form action="/plans" method="post">
+        <button name="value" class="btn btn-primary" type="submit" value="4" id="addToCartButton" onclick="setPlan()">Add to
+            Cart</button></form>
       </div>
+    </div> --}}
+</div>
     </div>
   </section>
 
- 
-    
- 
+
+
+
 
   <!-- Contact-->
   <section class="p-5">
@@ -132,17 +141,15 @@
 
 
   <script>
+
     function loadPlans() {
 
-    const plans = {{{ plans }}};
+    const plans = {{{ plans }}}
     const plansfeatures = {{{ planFeatures }}}
-
     const divplans = document.getElementById("plansdiv");
 
-
-
     plans.forEach((plan) => {
-
+            
       const div1 = document.createElement("div");
       const div2 = document.createElement("div");
       const div3 = document.createElement("div");
@@ -150,16 +157,24 @@
       const h3 = document.createElement("h3");
       const p = document.createElement("p");
       const h4 = document.createElement("h4");
-      const a = document.createElement("a");
+      const form = document.createElement("form");
+      const button = document.createElement("button");
 
-      div1.className += "col-md-6 col-lg-3";    
+      div1.className += "col-md-6 col-lg-3";
       div2.className += "card bg-light";
       div3.className += "card-body text-center";
       img.className += "rounded-circle mb-3";
       h3.className += "card-title mb-3";
       p.className += "card-text";
-      a.className += "btn btn-primary";
+     
+      form.setAttribute("action", "/plans");
+      form.setAttribute("method", "post");
 
+      button.setAttribute("name", "planId");
+      button.setAttribute("class", "btn btn-primary");
+      button.setAttribute("type", "submit");
+      button.setAttribute("value", plan.planId);
+      
       img.setAttribute("height", "100");
       img.setAttribute("src", plan.img);
 
@@ -173,21 +188,25 @@
         const price = document.createTextNode("C$" + plan.price + "/mo");
         h4.appendChild(price);
       }
+
       const addtoCart = document.createTextNode("Add to Cart");
-      a.appendChild(addtoCart);
+      button.appendChild(addtoCart);
+      form.appendChild(button);
 
       div3.appendChild(img);
       div3.appendChild(h3);
       div3.appendChild(p);
       div3.appendChild(h4);
-      div3.appendChild(a);
+      div3.appendChild(form);
 
       plansfeatures.forEach((planfeature) => {
 
         const ul = document.createElement("ul");
+        ul.className += "list-group";
 
         if (plan.planId == planfeature.planId) {
           const li = document.createElement("li");
+          li.className += "list-group-item";
           const feature = document.createTextNode(planfeature.description);
 
           li.appendChild(feature);
@@ -201,12 +220,9 @@
       div2.appendChild(div3);
 
       div1.appendChild(div2);
-      
+
       divplans.appendChild(div1);
     })
-
-
-
     
     }
 
